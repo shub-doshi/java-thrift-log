@@ -34,6 +34,8 @@ import org.apache.thrift.protocol.TProtocolFactory;
 import org.apache.thrift.protocol.TType;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <code>SpanProtocol</code> is a protocol-independent concrete decorator that allows a Thrift
@@ -52,6 +54,7 @@ public class SpanProtocol extends TProtocolDecorator {
   static final short SPAN_FIELD_ID = 3333; // Magic number
   private boolean oneWay;
   private boolean injected;
+  private static final Logger log = LoggerFactory.getLogger(SpanProtocol.class);
 
   /**
    * Encloses the specified protocol. Take tracer from GlobalTracer
